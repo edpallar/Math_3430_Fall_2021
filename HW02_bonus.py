@@ -160,7 +160,7 @@ return result
 def matrix_scalar_multi(matrix, scalar):
   result = []
   for index in range((len(matrix))):
-    result.append(vector_scalar_multi(matrix[index], 2))
+    result.append(vector_scalar_multi(matrix[index], scalar))
   return result 
 
 # matrix_scalar_multi(test_matrix_01,2) should output [[2,4,6],[8,10,12],[14,16,18]]
