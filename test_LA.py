@@ -1,9 +1,8 @@
 import LA 
-pytest.command
+import pytest
 
 
-
-
+#global test inputs 
 test_vector_01 = [1, 2, 4]
 test_vector_02 = [3, 1, 2]
 test_vector_03 = [3, 6, 9]
@@ -23,35 +22,35 @@ def test_add_vectors():
 #Problem 01
 
 def test_vector_scalar_multi():
-    assert 
-  
+    assert LA.vector_scalar_multi(test_vector_01,2) == [2,4,8]
+    assert LA.vector_scalar_multi(test_matrix_03,2) == [6,12,18]
 
 
 
 #Problem 02
 
 def test_matrix_scalar_multi():
-    assert
+    assert LA.matrix_scalar_multi(test_matrix_01,2) == [[2,4,6],[8,10,12],[14,16,18]]
+    assert LA.matrix_scalar_multi(test_matrix_01,3) == [[3,6,9],[12,15,18],[21,24,27]]
   
-
 
 #Problem 03
 
 def test_add_matrices():
-    assert
+    assert LA.add_matrices(test_matrix_01,test_matrix_02) == [[9,5,7],[10,20,13],[7,80,10]]
+    assert LA.add_matrices(test_matrix_01, test_matrix_03) == [[2,3,4],[6,7,8],[10,11,12]]
   
-
 
 #Problem 04
 
 def test_matrix_vector_multi():
-    assert 
-
-  
+    assert LA.matrix_vector_multi(test_matrix_01,test_vector_01) == [37,44,51]
+    assert LA.matrix_vector_multi(test_matrix_01, test_vector_02) == [21,27,33]
 
 
 #Problem 05
 
 def test_matrix_matrix_multi():
-    assert
-  
+    assert LA.matrix_matrix_multi(test_matrix_01,test_matrix_02) == [[48,63,78],[115,143,171],[295,368,441]]
+    assert LA.matrix_matrix_multi(test_matrix_01, test_matrix_03) == [[12,15,18],[24,30,36],[36,45,54]]
+
