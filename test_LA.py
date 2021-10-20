@@ -23,7 +23,7 @@ def test_add_vectors():
 
 def test_vector_scalar_multi():
     assert LA.vector_scalar_multi(test_vector_01,2) == [2,4,8]
-    assert LA.vector_scalar_multi(test_matrix_03,2) == [6,12,18]
+    assert LA.vector_scalar_multi(test_vector_03,2) == [6,12,18]
 
 
 
