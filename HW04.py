@@ -87,12 +87,12 @@ def p_norm(vector: list, p: int = 2) -> float:
     Returns: 
     The p-norm of the input vector. 
      """
-    result: float = 0  
-    for element in vector: 
-        if element < 0:
-            result += (-element) **p
-        else: 
-            result += element **p 
+    result: float = 0 
+    abs_vector: list = [] 
+    for index in range(len(vector)): 
+      abs_vector.append(absolute_value(vector[index]))
+    for element in abs_vector:
+      result += element**p
     result = result**(1/p)
     return result 
 
@@ -112,13 +112,10 @@ def inf_norm(vector: list) -> float :
   result: list = [] 
   for index in range(len(vector)):
     result.append(absolute_value(vector[index]))
-    print(result)
   return max(result)
 
-vector_a = [2,3,-5]
-
 # Problem 4 
-def p_norm_boolean(vector:list, p: float = 2) -> float :
+def p_norm_boolean(vector:list, p: float = 2, inf: bool = False) -> float :
   """Gives the p norm of the input vector, or the inf if p == "inf"
 
   If p is an integer, gives the p norm using our p_norm function. If p is a string == "inf", will use our inf_norm function. 
@@ -130,19 +127,19 @@ def p_norm_boolean(vector:list, p: float = 2) -> float :
   Returns:
     p norm of the vector input 
   """
-  if p == "inf":
+  if inf == True:
     print(inf_norm(vector))
   else: 
-    print(p_norm(vector))
+    print(p_norm(vector,p))
 
-print(p_norm_boolean(vector_a,3))
 
-"""
+vector_a = [1,2,2-2j]
+vector_b = [1,3,3-3j]
 #Problem 5 
 def inner_product(vector_1: list, vector_2: list) -> float: 
-  Gives the inner product of two input vectors 
+  """Gives the inner product of two input vectors 
 
-  Does this using vector multiplication of one times the conjugate of the other. We have a function for vector multiplication and we have a function for finding the transpose/conjugate of each component of the vector. We then just add the resulting multiplication values to output a scalar. 
+  First, we need to take the transpose of vector 1. Then, perform the dot product by multiplying the two vectors and adding each value to result. This should give an output of a single final scalar in result, not a list.  
 
   Args: 
     vector_1: vector of scalars, both real and complex 
@@ -150,5 +147,13 @@ def inner_product(vector_1: list, vector_2: list) -> float:
   Returns: 
     float equal to the inner product 
   """
+  result = 0
+  for element in vector_1:
+    vector_1[element] = conjugate(vector_1[element])
+  print(vector_1)
+  for index in range(len(vector_1)):
+    result += vector_1[index]*vector_2[index]
+
+print(inner_product(vector_a,vector_b))
 
 
