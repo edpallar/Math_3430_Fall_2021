@@ -54,3 +54,38 @@ def test_matrix_matrix_multi():
     assert LA.matrix_matrix_multi(test_matrix_01,test_matrix_02) == [[48,63,78],[115,143,171],[295,368,441]]
     assert LA.matrix_matrix_multi(test_matrix_01, test_matrix_03) == [[12,15,18],[24,30,36],[36,45,54]]
 
+#HW04 Problems: 
+
+#test inputs 
+a = 2-2j 
+b = 3
+c = 3 + 3j 
+
+vector_a = [2, 3+3j, -5-5j]
+vector_b = [2,3,-5]
+vector_c = [1,2,2-2j]
+vector_d = [1,3,3-3j]
+
+def test_conjugate():
+    assert LA.conjugate(a) == 2+2j 
+    assert LA.conjugate(b) == 3 
+
+def test_absolute_value():
+    assert LA.absolute_value(c) == (18)**(1/2)
+    assert LA.absolute_value(a) == (8)**(1/2)
+
+def test_p_norm_finite():
+    assert LA.p_norm_finite(vector_b) == (38)**(1/2)
+    assert LA.p_norm_finite(vector_b,3) == (160)**(1/2)
+
+def test_inf_norm():
+    assert LA.inf_norm(vector_a) == (50)**(1/2)
+    assert LA.inf_norm(vector_b) == (5)
+
+def test_p_norm():
+    assert LA.p_norm(vector_b) == (38)**(1/2)
+    assert LA.p_norm(vector_a, inf = True) == (50)**(1/2)
+
+def test_inner_product():
+    assert LA.inner_product(vector_c, vector_d) == 19
+    assert LA.inner_product(vector_a, vector_b) == (38-34j)
