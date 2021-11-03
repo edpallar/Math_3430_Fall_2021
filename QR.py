@@ -23,20 +23,20 @@ def unstable_gram_schmidt(matrix: list) -> list:
       R.append([0 for index in range(len(matrix))])
     # make V 
     V: list = []
-    
+    # according to the notes, j should run from (1,n+1) and k runs from (1,j)
     for index in range(len(matrix)):
       # copy A onto V then edit later 
       V.append(element)
-      for inner_index in range(index + 1,len(matrix)):
+      for inner_index in range(1,index):
         # conjugate of q muliplied by a = r
-        R[inner_index][index] = LA.inner_product(Q[index],V[inner_index])
+        R[inner_index][index] = LA.inner_product(Q[inner_index],V[index])
         # v =v - r(above output)*q
-        V[inner_index] = LA.add_vectors(V[inner_index],LA.vector_scalar_multi(Q[index],-R[index][index]))
+        V[inner_index] = LA.add_vectors(V[inner_index],LA.vector_scalar_multi(Q[index],-R[inner_index][index]))
       # find the 2-norm of diagnol of R 
       R[index][index]= LA.p_norm(V[index],2,False)
       # normalized vectors of v put into Q
       Q[index] = LA.vector_scalar_multi(V[index], 1/R[index][index])
-    return(Q,R)
+    return[Q,R]
     
     
 
@@ -78,4 +78,4 @@ def gram_schmidt(matrix:list) -> list:
         R[inner_index][index] = LA.inner_product(Q[index],V[inner_index])
         V[inner_index] = LA.add_vectors(V[inner_index],LA.vector_scalar_multi(Q[index],-R[inner_index][index]))
 
-    return(Q,R)
+    return[Q,R]
