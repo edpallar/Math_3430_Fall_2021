@@ -219,6 +219,9 @@ def F_builder(vector):
   print(result)
   return result 
   # F (for every column of A denoted by k)= I - 2* ((v*conjugate_tranpose(v))/(inner_product(v)))
+  
+
+print(F_builder(v_builder(A,0)))
 
 def householder(matrix):
   """Gives the householder full QR factorization of a given matrix. 
