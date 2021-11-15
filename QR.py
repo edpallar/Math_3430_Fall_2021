@@ -155,21 +155,12 @@ def diag_vec(matrix):
   Returns:
       matrix: A list of diag vecs according to their position in the orignal matrix
   """
-  diag = []
-  temp = []
-  counter = 0
-
-  for i in matrix:
-    for j in i[counter:]:
-      temp.append(j);
-    diag.append(temp.copy())
-    counter += 1
-    temp.clear()
-  
-  return diag
+  result = []
+  for index in range(len(matrix)):
+    result = matrix[index][index:]
 
   
-def v_builder(matrix, column_number):
+def v_builder(matrix: list, column_number: float) -> list:
   """Give the vector v needed for building F_builder
   
   Adds the two vectors where the first is the multiplication of the 2-norm of the retreived diag_vec and the basis vector. The second vector is just the retrieved diag_vec. 
@@ -184,18 +175,15 @@ def v_builder(matrix, column_number):
       
   """
   #v=||diag_vec||*e + diag_vec  
-  vec = diag_vec(matrix)[column_number]
-  print(vec)
-  v = LA.p_norm(vec)
-  print(v)
-  result = LA.add_vectors(LA.vector_scalar_multi(basis_vec_builder(len(vec)),v), vec)
+  vec: list = diag_vec(matrix)[column_number]
+  print(vec,"vec")
+  v: float = LA.p_norm(vec)
+  print(v,"v")
+  result: list = LA.add_vectors(LA.vector_scalar_multi(basis_vec_builder(len(vec)),v), vec)
   return result 
 
 A = [[1,0,1],[2,1,0]]
-print(v_builder(A,0))
-
-  
-
+print(v_builder(A,0), "v_builder")
 
 def F_builder(vector: list) -> list:
   """This function returns the matrix F needed to build Q. 
