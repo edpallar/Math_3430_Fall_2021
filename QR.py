@@ -161,7 +161,7 @@ def diag_vec(matrix):
   return result
 
   
-def v_builder(matrix: list, column_number: float) -> list:
+def v_builder(matrix, column_number):
   """Give the vector v needed for building F_builder
   
   Adds the two vectors where the first is the multiplication of the 2-norm of the retreived diag_vec and the basis vector. The second vector is just the retrieved diag_vec. 
@@ -176,17 +176,17 @@ def v_builder(matrix: list, column_number: float) -> list:
       
   """
   #v=||diag_vec||*e + diag_vec  
-  vec: list = diag_vec(matrix)[column_number]
+  vec = diag_vec(matrix)[column_number]
   print(vec,"vec")
-  v: float = LA.p_norm(vec)
+  v = LA.p_norm(vec,2, False)
   print(v,"v")
-  result: list = LA.add_vectors(LA.vector_scalar_multi(basis_vec_builder(len(vec)),v), vec)
+  result = LA.add_vectors(LA.vector_scalar_multi(basis_vec_builder(len(vec)),v), vec)
   return result 
 
 A = [[1,0,1],[2,1,0]]
 print(v_builder(A,0), "v_builder")
 
-def F_builder(vector: list) -> list:
+def F_builder(vector):
   """This function returns the matrix F needed to build Q. 
   
   By using the v_builder function to access the necessary v for each iteration of F, we use the following equation to find F. 
@@ -198,11 +198,11 @@ def F_builder(vector: list) -> list:
   Returns:
       matrix: Returns a matrix of the built F from the input vector v.
   """
-  iden: list = identity_builder(len(vector))
+  iden = identity_builder(len(vector))
   print(iden,"iden")
-  two: float = 2/(LA.inner_product(vector,vector))
+  two = 2/(LA.inner_product(vector,vector))
   print(two,"two")
-  cv:list = LA.matrix_matrix_multi([vector],conjugate_transpose([vector]))
+  cv = LA.matrix_matrix_multi([vector],conjugate_transpose([vector]))
   print(cv,"cv")
   result = LA.add_matrices(iden,-(LA.vector_scalar_multi(cv,two)))
   print(result)
