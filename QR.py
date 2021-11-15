@@ -197,7 +197,7 @@ print(v_builder(A,0))
   
 
 
-def F_builder(vector):
+def F_builder(vector: list) -> list:
   """This function returns the matrix F needed to build Q. 
   
   By using the v_builder function to access the necessary v for each iteration of F, we use the following equation to find F. 
@@ -213,13 +213,12 @@ def F_builder(vector):
   print(iden,"iden")
   two: float = 2/(LA.inner_product(vector,vector))
   print(two,"two")
-  cv:list = LA. matrix_matrix_multi([vector],[conjugate_transpose([vector])])
+  cv:list = LA.matrix_matrix_multi([vector],conjugate_transpose([vector]))
   print(cv,"cv")
   result = LA.add_matrices(iden,-(LA.vector_scalar_multi(cv,two)))
   print(result)
   return result 
   # F (for every column of A denoted by k)= I - 2* ((v*conjugate_tranpose(v))/(inner_product(v)))
-  
 
 print(F_builder(v_builder(A,0)))
 
