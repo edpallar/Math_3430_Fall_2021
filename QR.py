@@ -157,7 +157,8 @@ def diag_vec(matrix):
   """
   result = []
   for index in range(len(matrix)):
-    result = matrix[index][index:]
+    result.append(matrix[index][index:])
+  return result
 
   
 def v_builder(matrix: list, column_number: float) -> list:
