@@ -1,7 +1,7 @@
 # Problem 0
 
 
-def add_vectors(vector_a: list, vector_b: list) -> list:
+def add_vectors(vector_a, vector_b):
     """Adds the two input vectors.
 
     Creates a result vector stored as a list of 0's the same length as the input 
@@ -24,7 +24,7 @@ def add_vectors(vector_a: list, vector_b: list) -> list:
 
 #Problem 01
 
-def vector_scalar_multi(vector: list, scalar: float):
+def vector_scalar_multi(vector, scalar):
   """Multiplies a vector by a scalar.
 
     Creates a result vector as an empty set. It then goes through each element 
@@ -48,7 +48,7 @@ def vector_scalar_multi(vector: list, scalar: float):
 
 #Problem 02
 
-def matrix_scalar_multi(matrix: list, scalar: float):
+def matrix_scalar_multi(matrix, scalar):
   """Multiplies a matrix by a scalar.
 
     Creates a result matrix as an empty set. It then goes through each element 
@@ -72,7 +72,7 @@ def matrix_scalar_multi(matrix: list, scalar: float):
 
 #Problem 03
 
-def add_matrices(matrix_a: list, matrix_b: list):
+def add_matrices(matrix_a, matrix_b):
   """Adds the two input matrices.
 
     Creates a result matrix stored as an empty list. Using our function #0, we 
@@ -95,7 +95,7 @@ def add_matrices(matrix_a: list, matrix_b: list):
 
 #Problem 04
 
-def matrix_vector_multi(matrix: list, vector: list):
+def matrix_vector_multi(matrix, vector):
   """Multiplies a matrix by a vector.
 
     The number of columns of matrix must equal the number of components in our 
@@ -128,7 +128,7 @@ def matrix_vector_multi(matrix: list, vector: list):
 
 #Problem 05
 
-def matrix_matrix_multi(matrix_1: list, matrix_2: list):
+def matrix_matrix_multi(matrix_1, matrix_2):
   """Multiplies a matrix by another matrix.
 
     We will create an empty result list and store the sums of the columns 
@@ -146,13 +146,13 @@ def matrix_matrix_multi(matrix_1: list, matrix_2: list):
        matrix as result. 
     """
   result = []
-  for index in range(len(matrix_1)):
+  for index in range(len(matrix_2)):
     result.append(matrix_vector_multi(matrix_1, matrix_2[index]))
   return result
 
 
 #HW04 problems 
-def conjugate(scalar: complex):
+def conjugate(scalar):
   """Gives the conjugate of a complex input
   
   We know that the conjugate of a+bj is a-bj and vice versa . Thus, we can just take the negative multiplication to cover both positive and negative cases. 
@@ -163,13 +163,13 @@ def conjugate(scalar: complex):
   Returns:
     conjugate of input 
   """
-  result: complex = scalar.real + -scalar.imag*1j
+  result = scalar.real + -scalar.imag*1j
   
   return result 
 
 
 # Problem 1 
-def absolute_value(scalar: complex) -> float: 
+def absolute_value(scalar):
   """Returns the absolute value of the scalar input, both real and complex. 
 
   We are formating in the complex form so that this function does both, for real the j portion is = 0. We are doing this by taking the square root of the multiplication of the input,z, and its conjugate. Then taking the square root of this multiplication will give the absolute value. 
@@ -179,14 +179,14 @@ def absolute_value(scalar: complex) -> float:
   Returns:
     the absolute value of the input, which is a float 
   """
-  conjugate: complex = scalar.conjugate()
-  result: float = scalar*conjugate 
+  conjugate = scalar.conjugate()
+  result = scalar*conjugate 
   result = result**(1/2)
   return result 
 
 
 # Problem 2 
-def p_norm_finite(vector: list, p: int = 2) -> float:
+def p_norm_finite(vector, p):
     """
     Computes the p norm of a vector. 
     Set result = 0. For each element of vector, takes absolute value and raises it to the pth power and then adds it to result. Takes pth root of result and then returns result. Defaults to the 2-norm. 
@@ -198,8 +198,8 @@ def p_norm_finite(vector: list, p: int = 2) -> float:
     Returns: 
     The p-norm of the input vector. 
      """
-    result: float = 0 
-    abs_vector: list = [] 
+    result = 0 
+    abs_vector = [] 
     for index in range(len(vector)): 
       abs_vector.append(absolute_value(vector[index]))
     for element in abs_vector:
@@ -208,9 +208,8 @@ def p_norm_finite(vector: list, p: int = 2) -> float:
     return result 
 
 
-
 # Problem 3 
-def inf_norm(vector: list) -> float : 
+def inf_norm(vector) : 
   """Returns the infinity norm of a vector input 
 
   Finds the absolute value of each element of vector, and stores these values in result. We then go through result to find the max value in result to return the infinity norm. 
@@ -220,13 +219,13 @@ def inf_norm(vector: list) -> float :
   Returns:
     infinity norm of the vector 
   """
-  result: list = [] 
+  result = [] 
   for index in range(len(vector)):
     result.append(absolute_value(vector[index]))
   return max(result)
 
 # Problem 4 
-def p_norm(vector:list, p: float = 2, inf: bool = False) -> float :
+def p_norm(vector, p, inf):
   """Gives the p norm of the input vector, or the inf if p == "inf"
 
   If p is an integer, gives the p norm using our p_norm function. If p is a string == "inf", will use our inf_norm function. 
@@ -244,11 +243,9 @@ def p_norm(vector:list, p: float = 2, inf: bool = False) -> float :
     return(p_norm_finite(vector,p))
 
 
-vector_a = [1,2,2-2j]
-vector_b = [1,3,3-3j]
 
 #Problem 5 
-def inner_product(vector_1: list, vector_2: list) -> float: 
+def inner_product(vector_1, vector_2):
   """Gives the inner product of two input vectors 
 
   First, we need to take the transpose of vector 1. Then, perform the dot product by multiplying the two vectors and adding each value to result. This should give an output of a single final scalar in result, not a list.  
