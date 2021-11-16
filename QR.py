@@ -1,4 +1,4 @@
-import LA
+import LA 
 
 
 def gram_schmidt(matrix):
@@ -204,7 +204,8 @@ def F_builder(vector):
   print(two,"two")
   cv = LA.matrix_matrix_multi([vector],conjugate_transpose([vector]))
   print(cv,"cv")
-  result = LA.add_matrices(iden,-(LA.vector_scalar_multi(cv,two)))
+  
+  result = LA.add_matrices(iden,-LA.matrix_scalar_multi(cv,two))
   print(result)
   return result 
   # F (for every column of A denoted by k)= I - 2* ((v*conjugate_tranpose(v))/(inner_product(v)))
