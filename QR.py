@@ -184,7 +184,7 @@ def v_builder(matrix, column_number):
   return result 
 
 A = [[1,0,1],[2,1,0]]
-print(v_builder(A,0), "v_builder")
+
 
 def F_builder(vector):
   """This function returns the matrix F needed to build Q. 
@@ -205,7 +205,7 @@ def F_builder(vector):
   cv = LA.matrix_matrix_multi([vector],conjugate_transpose([vector]))
   print(cv,"cv")
   
-  result = LA.add_matrices(iden,-LA.matrix_scalar_multi(cv,two))
+  result = LA.add_matrices(iden,LA.matrix_scalar_multi(cv,-two))
   print(result)
   return result 
   # F (for every column of A denoted by k)= I - 2* ((v*conjugate_tranpose(v))/(inner_product(v)))
